@@ -57,7 +57,6 @@ namespace ItemExpansionMod
                     customEquipment.CustomInitialize(manifest.SpriteResolver);
                     CustomApparel item = Item.Create<CustomApparel>(customEquipment.Name);
                     NewItemNames.Add(item.Name.ToLower());
-                    item.IsLocked = true;
                     GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, true, item);
                 }
             }

@@ -20,6 +20,7 @@ namespace ItemExpansionMod
             apparel.DurabilityDisplayLayers.AddRange(Sprites.Select((ModEquipmentSprite x) => x.Get(spriteResolver)));
             apparel.Category = ItemCategory.Clothing;
             apparel.DisplaySpriteResource = spriteResolver.ResolveAsResource(PreviewImage);
+            apparel.IsLocked = true;
             _instance = apparel;
             if (!Item.All.ContainsKey(Name.ToLower()))
             {

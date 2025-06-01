@@ -9,7 +9,7 @@ namespace ItemExpansionMod
 {
     public class CustomApparel : Apparel
     {
-        public bool IsLocked = false;
+        public bool IsLocked;
         public override void UnEquipped(Character User)
         {
             User = User.Get();
