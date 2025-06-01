@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <BaseOutputPath>H:\projects\tc-modding\ThirdCrisisModding\ItemExpansionMod\obj\Debug\netstandard2.1</BaseOutputPath>
+    <BaseOutputPath>H:\projects\tc-modding\TCItemExpansionMod\ItemExpansionMod\obj\Debug\netstandard2.1</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
