@@ -5,6 +5,7 @@ using Modding;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Xml.Serialization;
 using UnityEngine;
@@ -55,37 +56,27 @@ namespace ItemExpansionMod
                 foreach (CustomEquipment customEquipment in customEquipments)
                 {
                     customEquipment.CustomInitialize(manifest.SpriteResolver);
-                    CustomApparel item = Item.Create<CustomApparel>(customEquipment.Name);
-                    NewItemNames.Add(item.Name.ToLower());
+                    CustomApparel item = CustomApparel.CreateWithStatModifiers(customEquipment.Name);
+                    NewItemNames.Add(item.Name);
                     GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, true, item);
+
+                    //ItemShopCatalogue catalogue = ScriptableObject.CreateInstance<ItemShopCatalogue>();
+                    //catalogue.Items = new List<ShopItemInfo>()
+                    //{
+                    //    new ShopItemInfo()
+                    //    {
+                    //        Item = item,
+                    //        Cost = 1000,
+                    //    }
+                    //};
+                    //ItemVendor vendor = new ItemVendor()
+                    //{
+                    //    Catalogue = catalogue
+                    //};
                 }
             }
 
-            //item.StatRequirements = new List<StatModifierInfo>()
-            //{
-            //    new StatModifierInfo()
-            //    {
-            //        StatName = "stat_perversion",
-            //        ModifyAmount = 100,
-            //    }
-            //};
-            //ItemShopCatalogue catalogue = ScriptableObject.CreateInstance<ItemShopCatalogue>();
-            //catalogue.Items = new List<ShopItemInfo>()
-            //{
-            //    new ShopItemInfo()
-            //    {
-            //        Item = item,
-            //        Cost = 1000,
-            //    }
-            //};
-            //ItemVendor vendor = new ItemVendor()
-            //{
-            //    Catalogue = catalogue
-            //};
-
-            //SetStatModifier(item, "stat_lust_power", 5);
-            //GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, false, item);
-            Debug.Log("Modded OnModLoaded");
+`            Debug.Log("Modded OnModLoaded");
         }
 
         public void OnModUnLoaded()
@@ -93,7 +84,8 @@ namespace ItemExpansionMod
             // Clean up items
             foreach (string itemName in NewItemNames)
             {
-                Item.All.Remove(itemName);
+                Debug.Log("Remove " + itemName);
+                Item.All.Remove(itemName.ToLower());
             }
             Debug.Log("Modded OnModUnLoaded");
         }

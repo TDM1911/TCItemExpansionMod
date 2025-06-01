@@ -1,8 +1,10 @@
-﻿using Asuna.Items;
+﻿using Asuna.CharManagement;
+using Asuna.Items;
 using Modding;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using UnityEngine;
 
@@ -10,6 +12,9 @@ namespace ItemExpansionMod
 {
     public class CustomEquipment : ModEquipment
     {
+        public bool IsLocked;
+        public List<StatModifierInfo> StatRequirements;
+        public List<StatModifierInfo> StatModifierInfos;
         private CustomApparel _instance;
 
         public void CustomInitialize(ModSpriteResolver spriteResolver)
@@ -20,7 +25,9 @@ namespace ItemExpansionMod
             apparel.DurabilityDisplayLayers.AddRange(Sprites.Select((ModEquipmentSprite x) => x.Get(spriteResolver)));
             apparel.Category = ItemCategory.Clothing;
             apparel.DisplaySpriteResource = spriteResolver.ResolveAsResource(PreviewImage);
-            apparel.IsLocked = true;
+            apparel.IsLocked = IsLocked;
+            apparel.StatRequirements = StatRequirements;
+            apparel.StatModifierInfos = StatModifierInfos;
             _instance = apparel;
             if (!Item.All.ContainsKey(Name.ToLower()))
             {

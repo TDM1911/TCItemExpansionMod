@@ -2,6 +2,7 @@
 using Asuna.Items;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ namespace ItemExpansionMod
     public class CustomApparel : Apparel
     {
         public bool IsLocked;
+        public List<StatModifierInfo> StatModifierInfos;
+
         public override void UnEquipped(Character User)
         {
             User = User.Get();
@@ -40,6 +43,18 @@ namespace ItemExpansionMod
                 UseText = "Remove";
             }
         }
+        public static CustomApparel CreateWithStatModifiers(string name)
+        {
+            Item item = Create(name);
+            if (item is CustomApparel)
+            {
+                typeof(Equipment)
+                   .GetField("_dynamicStatModifiers", BindingFlags.Instance | BindingFlags.NonPublic)
+                   .SetValue(item, (item as CustomApparel).StatModifierInfos);
+                return (item as CustomApparel);
+            }
 
+            return null;
+        }
     }
 }
