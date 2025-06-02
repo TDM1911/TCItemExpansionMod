@@ -1,0 +1,64 @@
+﻿<?xml version="1.0"?>
+<ArrayOfCustomEquipment xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<CustomEquipment>
+		<IsLocked>true</IsLocked>
+		<Name>Steel Shock Collar</Name>
+		<PreviewImage>assets\previews\steel_shock_collar.png</PreviewImage>
+		<Slots>
+			<string>Choker</string>
+		</Slots>
+		<Sprites>
+			<ModEquipmentSprite>
+				<Name>Steel Shock Collar</Name>
+				<Image>assets\steel_shock_collar.png</Image>
+				<Color>#FFFFFFFF</Color>
+				<SortingLayer>Outfit</SortingLayer>
+				<SortingOrder>1</SortingOrder>
+			</ModEquipmentSprite>
+		</Sprites>
+		<StatRequirements>
+			<StatModifierInfo>
+				<StatName>stat_perversion</StatName>
+				<ModifyAmount>100</ModifyAmount>
+			</StatModifierInfo>
+		</StatRequirements>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_lust_power</StatName>
+				<ModifyAmount>5</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+	</CustomEquipment>
+	<CustomEquipment>
+		<IsLocked>false</IsLocked>
+		<Name>Full Body Black Latex Suit</Name>
+		<PreviewImage>assets\previews\full_body_black_latex_suit.png</PreviewImage>
+		<Slots>
+			<string>Pants</string>
+			<string>Shirt</string>
+		</Slots>
+		<Sprites>
+			<ModEquipmentSprite>
+				<Name>Full Body Black Latex Suit</Name>
+				<Image>assets\full_body_black_latex_suit.png</Image>
+				<Color>#FFFFFFFF</Color>
+				<SortingLayer>Outfit</SortingLayer>
+				<SortingOrder>0</SortingOrder>
+			</ModEquipmentSprite>
+		</Sprites>
+		<StatRequirements>
+			<StatModifierInfo>
+				<StatName>stat_perversion</StatName>
+				<ModifyAmount>100</ModifyAmount>
+			</StatModifierInfo>
+		</StatRequirements>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_lust_power</StatName>
+				<ModifyAmount>10</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+	</CustomEquipment>
+</ArrayOfCustomEquipment>

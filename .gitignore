@@ -1,3 +1,6 @@
-/ItemExpansionMod/obj
+/ItemExpansionMod/obj/*.*
+/ItemExpansionMod/obj/Debug/netstandard2.1/*.*
+/ItemExpansionMod/obj/Debug/netstandard2.1/Debug
+/ItemExpansionMod/obj/Debug/netstandard2.1/TempPE
 /ItemExpansionMod/bin
 /.vs
