@@ -61,4 +61,57 @@
 			</StatModifierInfo>
 		</StatModifierInfos>
 	</CustomEquipment>
+	<CustomEquipment>
+		<IsLocked>false</IsLocked>
+		<Name>Dark Boob Window Sweater</Name>
+		<PreviewImage>assets\previews\dark_boob_window_sweater.png</PreviewImage>
+		<Slots>
+			<string>Shirt</string>
+		</Slots>
+		<Sprites>
+			<ModEquipmentSprite>
+				<Name>Dark Boob Window Sweater</Name>
+				<Image>assets\dark_boob_window_sweater.png</Image>
+				<Color>#FFFFFFFF</Color>
+				<SortingLayer>Outfit</SortingLayer>
+				<SortingOrder>0</SortingOrder>
+			</ModEquipmentSprite>
+		</Sprites>
+		<StatRequirements>
+		</StatRequirements>
+		<StatModifierInfos>
+		</StatModifierInfos>
+	</CustomEquipment>
+	<CustomEquipment>
+		<IsLocked>true</IsLocked>
+		<Name>Basic Full Body Mods</Name>
+		<PreviewImage>assets\previews\body_mods.png</PreviewImage>
+		<Slots>
+		</Slots>
+		<Sprites>
+			<ModEquipmentSprite>
+				<Name>Basic Full Body Mods</Name>
+				<Image>assets\jenna_full_body_mods_1.png</Image>
+				<Color>#FFFFFFFF</Color>
+				<SortingLayer>UnderExpression</SortingLayer>
+				<SortingOrder>0</SortingOrder>
+			</ModEquipmentSprite>
+		</Sprites>
+		<StatRequirements>
+			<StatModifierInfo>
+				<StatName>stat_physical_defense</StatName>
+				<ModifyAmount>5</ModifyAmount>
+			</StatModifierInfo>
+		</StatRequirements>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<StatName>stat_hitpoints</StatName>
+				<ModifyAmount>5</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<StatName>stat_physical_defense</StatName>
+				<ModifyAmount>5</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+	</CustomEquipment>
 </ArrayOfCustomEquipment>
