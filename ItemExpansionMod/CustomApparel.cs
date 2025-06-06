@@ -1,4 +1,6 @@
-﻿using Asuna.CharManagement;
+﻿using ANToolkit.ResourceManagement;
+using ANToolkit.Utility;
+using Asuna.CharManagement;
 using Asuna.Items;
 using System;
 using System.Collections.Generic;
@@ -51,6 +53,9 @@ namespace ItemExpansionMod
                 typeof(Equipment)
                    .GetField("_dynamicStatModifiers", BindingFlags.Instance | BindingFlags.NonPublic)
                    .SetValue(item, (item as CustomApparel).StatModifierInfos);
+                typeof(Equipment)
+                    .GetField("StatModifiers", BindingFlags.Instance | BindingFlags.NonPublic)
+                    .SetValue(item, (item as CustomApparel).StatModifierInfos);
                 return (item as CustomApparel);
             }
 

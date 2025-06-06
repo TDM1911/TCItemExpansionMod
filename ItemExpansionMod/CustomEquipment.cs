@@ -28,6 +28,12 @@ namespace ItemExpansionMod
             apparel.IsLocked = IsLocked;
             apparel.StatRequirements = StatRequirements;
             apparel.StatModifierInfos = StatModifierInfos;
+            typeof(Equipment)
+                .GetField("_dynamicStatModifiers", BindingFlags.Instance | BindingFlags.NonPublic)
+                .SetValue(apparel, apparel.StatModifierInfos);
+            typeof(Equipment)
+                .GetField("StatModifiers", BindingFlags.Instance | BindingFlags.NonPublic)
+                .SetValue(apparel, apparel.StatModifierInfos);
             _instance = apparel;
             if (!Item.All.ContainsKey(Name.ToLower()))
             {

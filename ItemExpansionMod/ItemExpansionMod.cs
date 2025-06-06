@@ -4,6 +4,7 @@ using Asuna.CharManagement;
 using Asuna.Dialogues;
 using Asuna.Items;
 using Modding;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
 using System.IO;
@@ -44,9 +45,7 @@ namespace ItemExpansionMod
                 interactable.TypeOfInteraction = InteractionType.Talk;
                 interactable.OnInteracted.AddListener(x =>
                 {
-                    Debug.Log("I was interacted with!");
-                    var dialogue = vendor.TargetDialogue;
-                    DialogueManager.StartDialogue(dialogue);
+                    vendor.Catalogue.OpenShop();
                 });
             }
             Debug.Log("Modded OnLevelChanged");
@@ -80,7 +79,6 @@ namespace ItemExpansionMod
                     customEquipment.CustomInitialize(manifest.SpriteResolver);
                     CustomApparel item = CustomApparel.CreateWithStatModifiers(customEquipment.Name);
                     NewItemNames.Add(item.Name);
-                    GiveItems.GiveToCharacter(Character.Get("Jenna"), false, false, false, item);
 
                     shopItems.Add(
                         new ShopItemInfo()
@@ -94,24 +92,12 @@ namespace ItemExpansionMod
                 catalogue.Items = shopItems;
                 ANToolkit.ResourceManagement.ANResourceSprite resource = manifest.SpriteResolver.ResolveAsResource("assets\\sprites\\ANDR-047139.png");
 
-                var openShopLine = new DialogueLine()
-                {
-                    BackgroundSpriteResource = resource,
-                    Speaker = "ANDR-047139",
-                    NameOverride = "ANDR-047139",
-                    Text = "This is my ware!",
-                    TextBoxColor = Color.cyan,
-                    TextColor = Color.red,
-                    LineID = "OPEN_ANDR_SHOP"
-                };
                 var dialogue = ScriptableObject.CreateInstance<Dialogue>();
-                dialogue.Lines.Add(openShopLine);
                 vendor = new ItemVendor()
                 {
                     Catalogue = catalogue,
                     TargetDialogue = dialogue,
                 };
-                vendor.enabled = true;
             }
 
             Debug.Log("Modded OnModLoaded");
@@ -126,23 +112,6 @@ namespace ItemExpansionMod
                 Item.All.Remove(itemName.ToLower());
             }
             Debug.Log("Modded OnModUnLoaded");
-        }
-
-        private void SetStatModifier(Equipment equipment, string statName, int value)
-        {
-            List<StatModifierInfo> modifier = new List<StatModifierInfo>();
-            StatModifierInfo statModifierInfo =
-                new StatModifierInfo()
-                {
-                    Type = StatModifierType.Value,
-                    StatName = statName,
-                    ModifyAmount = value,
-                };
-            modifier.Add(statModifierInfo);
-
-            typeof(Equipment)
-               .GetField("_dynamicStatModifiers", BindingFlags.Instance | BindingFlags.NonPublic)
-               .SetValue(equipment, modifier);
         }
     }
 }
