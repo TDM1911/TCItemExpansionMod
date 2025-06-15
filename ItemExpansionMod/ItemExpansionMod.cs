@@ -1,8 +1,11 @@
 ﻿using ANToolkit.Controllers;
+using ANToolkit.Level;
 using ANToolkit.Save;
 using Asuna.CharManagement;
+using ANToolkit.ResourceManagement;
 using Asuna.Dialogues;
 using Asuna.Items;
+using Asuna.Weather;
 using Modding;
 using System;
 using System.Collections.Generic;
@@ -18,8 +21,11 @@ namespace ItemExpansionMod
 {
     public class ItemExpansionMod : ITCMod
     {
-        ItemVendor vendor;
+        public ItemVendor vendor;
         public List<string> NewItemNames = new List<string>();
+        public List<Dialogue> dialogues = new List<Dialogue>();
+        public Dictionary<string, ANResourceSprite> resourceSprites = new Dictionary<string, ANResourceSprite>();
+        public bool inAndrNPCRoom = false;
 
         public void OnDialogueStarted(Dialogue dialogue)
         {
@@ -33,19 +39,112 @@ namespace ItemExpansionMod
 
         public void OnLevelChanged(string oldLevel, string newLevel)
         {
-            if (newLevel == "Carceburg")
+            string baseCustomShopLevel = "Motel_Tunnel";
+            if (inAndrNPCRoom = true && newLevel != baseCustomShopLevel)
             {
-                Debug.Log("Spawn NPC");
-                var interactableGameObject = new GameObject();
+                inAndrNPCRoom = false;
+                Character.Player.Handlers.First().transform.position = new Vector3(8f, -18f);
+            }
+            if (inAndrNPCRoom = true && newLevel == baseCustomShopLevel)
+            {
+                List<CustomApparel> lockedItems = new List<CustomApparel>();
+                foreach (CustomApparel item in Character.Player.EquippedItems.GetAll<CustomApparel>())
+                {
+                    if (item.IsLocked)
+                    {
+                        lockedItems.Add(item);
+                        item.IsLocked = false;
+                    }
+                }
+
+                foreach (CustomApparel item in Character.Player.Inventory.GetAll<CustomApparel>())
+                {
+                    if (item.IsLocked)
+                    {
+                        lockedItems.Add(item);
+                        item.IsLocked = false;
+                    }
+                }
+                GameObject wallLeft = new GameObject();
+                wallLeft.transform.position = new Vector3(-4.5f, 1f);
+                BoxCollider boxColliderLeft = wallLeft.AddComponent<BoxCollider>();
+                boxColliderLeft.size = new Vector3(2f, 2f);
+
+                GameObject wallRight = new GameObject();
+                wallRight.transform.position = new Vector3(8f, 1f);
+                BoxCollider boxColliderRight = wallRight.AddComponent<BoxCollider>();
+                boxColliderRight.size = new Vector3(2f, 2f);
+
+                GameObject door = new GameObject();
+                door.transform.position = new Vector3(2.5f, -0.45f);
+                BoxCollider doorCollider = door.AddComponent<BoxCollider>();
+                doorCollider.size = new Vector3(2f, 1f);
+
+                GameObject doorSprite = new GameObject();
+                doorSprite.transform.position = new Vector3(2.5f, -0.45f);
+                BoxCollider doorSpriteCollider = doorSprite.AddComponent<BoxCollider>();
+                doorSpriteCollider.size = new Vector3(2f, 1f);
+                SpriteRenderer doorSpriteRenderer = doorSprite.AddComponent<SpriteRenderer>();
+                doorSpriteRenderer.sprite = resourceSprites["door"];
+                doorSpriteRenderer.transform.localScale = new Vector3(2f, 1f);
+
+                Interactable doorInteractable = door.AddComponent<Interactable>();
+                doorInteractable.TypeOfInteraction = InteractionType.Door;
+                doorInteractable.OnInteracted.AddListener(x =>
+                {
+                    foreach (CustomApparel item in lockedItems)
+                    {
+                        item.IsLocked = true;
+                    }
+                    LevelTransition.Instance.ToLevel("Carceburg");
+                });
+
+                GameObject andrNPC = new GameObject();
+                andrNPC.transform.position = new Vector3(5f, 0.2f);
+                BoxCollider andrNPCCollider = andrNPC.AddComponent<BoxCollider>();
+                andrNPCCollider.size = new Vector3(1f, 1f);
+                GameObject andrNPCSprite = new GameObject();
+                andrNPCSprite.transform.position = new Vector3(4.2f, 0f);
+                SpriteRenderer andrNPCSpriteRenderer = andrNPCSprite.AddComponent<SpriteRenderer>();
+                andrNPCSpriteRenderer.sprite = resourceSprites["ANDR-047139_Overworld"];
+                andrNPCSpriteRenderer.transform.localScale = new Vector3(1f, 1f);
+
+                Interactable andrNPCInteractable = andrNPC.AddComponent<Interactable>();
+                andrNPCInteractable.TypeOfInteraction = InteractionType.Talk;
+                andrNPCInteractable.OnInteracted.AddListener(x =>
+                {
+                    vendor.Catalogue.OpenShop();
+                });
+            } 
+            else if (newLevel == "Carceburg")
+            {
+                GameObject interactableGameObject = new GameObject();
                 interactableGameObject.transform.position = new Vector3(8f, -18f);
-                var boxCollider = interactableGameObject.AddComponent<BoxCollider>();
+                BoxCollider boxCollider = interactableGameObject.AddComponent<BoxCollider>();
                 boxCollider.size = new Vector3(1f, 1f);
 
-                var interactable = interactableGameObject.AddComponent<Interactable>();
+                Interactable interactable = interactableGameObject.AddComponent<Interactable>();
                 interactable.TypeOfInteraction = InteractionType.Talk;
                 interactable.OnInteracted.AddListener(x =>
                 {
-                    vendor.Catalogue.OpenShop();
+                    if (DNCTime.Instance.time.Hours > 20)
+                {
+                        bool isTalkedToANDR = SaveManager.GetKey("isTalkedToANDR", false);
+                        if (!isTalkedToANDR)
+                        {
+                            DialogueManager.StartDialogue(dialogues[1]);
+                            SaveManager.SetKey("isTalkedToANDR", true);
+                        }
+                        else
+                        {
+                            inAndrNPCRoom = true;
+                            LevelTransition.Instance.ToLevel(baseCustomShopLevel);
+                        }
+                    }
+                    else
+                    {
+                        DialogueManager.StartDialogue(dialogues[0]);
+                    }
                 });
             }
             Debug.Log("Modded OnLevelChanged");
@@ -53,7 +152,7 @@ namespace ItemExpansionMod
 
         public void OnLineStarted(DialogueLine line)
         {
-            Debug.Log("Modded OnLineStarted");
+            //
         }
 
         public static T Deserialize<T>(string xmlString)
@@ -84,20 +183,31 @@ namespace ItemExpansionMod
                         new ShopItemInfo()
                         {
                             Item = item,
-                            Cost = 1000,
+                            Cost = item.Price,
                         }
                     );
                 }
                 ItemShopCatalogue catalogue = ScriptableObject.CreateInstance<ItemShopCatalogue>();
                 catalogue.Items = shopItems;
-                ANToolkit.ResourceManagement.ANResourceSprite resource = manifest.SpriteResolver.ResolveAsResource("assets\\sprites\\ANDR-047139.png");
 
-                var dialogue = ScriptableObject.CreateInstance<Dialogue>();
+                Dialogue dialogueDay = DialogueIngameEditor.LoadDialogue(Path.Combine(manifest.ModPath, "dialogue\\ANDR_day.dialogue"));
+                Dialogue dialogueFirstConvo = DialogueIngameEditor.LoadDialogue(Path.Combine(manifest.ModPath, "dialogue\\ANDR_first_convo.dialogue"));
+
+                ANResourceSprite resource = manifest.SpriteResolver.ResolveAsResource("assets\\sprites\\ANDR-047139_Sprite.png");
+                foreach (DialogueLine line in dialogueFirstConvo.Lines)
+                {
+                    if (line.NameOverride == "A" || line.NameOverride == "Anonymous Person") {
+                        line.BackgroundSpriteResource = resource;
+                    };
+                }
+                dialogues.Add(dialogueDay);
+                dialogues.Add(dialogueFirstConvo);
+
                 vendor = new ItemVendor()
                 {
                     Catalogue = catalogue,
-                    TargetDialogue = dialogue,
                 };
+                LoadAllResources(manifest);
             }
 
             Debug.Log("Modded OnModLoaded");
@@ -112,6 +222,13 @@ namespace ItemExpansionMod
                 Item.All.Remove(itemName.ToLower());
             }
             Debug.Log("Modded OnModUnLoaded");
+        }
+
+        private void LoadAllResources(ModManifest manifest)
+        {
+            resourceSprites.Add("ANDR-047139_Overworld", manifest.SpriteResolver.ResolveAsResource("assets\\sprites\\ANDR-047139_Overworld.png"));
+            resourceSprites.Add("wall", manifest.SpriteResolver.ResolveAsResource("assets\\sprites\\room_wall.png"));
+            resourceSprites.Add("door", manifest.SpriteResolver.ResolveAsResource("assets\\sprites\\door.png"));
         }
     }
 }

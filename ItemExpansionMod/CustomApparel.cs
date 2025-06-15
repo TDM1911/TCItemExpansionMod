@@ -1,9 +1,11 @@
 ﻿using ANToolkit.ResourceManagement;
 using ANToolkit.Utility;
 using Asuna.CharManagement;
+using Asuna.Dialogues;
 using Asuna.Items;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using UnityEngine;
@@ -13,6 +15,7 @@ namespace ItemExpansionMod
     public class CustomApparel : Apparel
     {
         public bool IsLocked;
+        public int Price;
         public List<StatModifierInfo> StatModifierInfos;
 
         public override void UnEquipped(Character User)
@@ -39,8 +42,22 @@ namespace ItemExpansionMod
             }
 
             UseText = "Wear";
+            Debug.Log(IsLocked);
             if (IsLocked)
             {
+                Dialogue dialogue = ScriptableObject.CreateInstance<Dialogue>();
+                dialogue.Lines.Add(new DialogueLine()
+                {
+                    LineID = "body_mod_alert",
+                    Text = "I can't remove this without A's help!",
+                    Speaker = "Jenna",
+                    BrowExpression = Character.Player.GetPresetExpressionID(PresetExpression.Shocked),
+                    EyeExpression = Character.Player.GetPresetExpressionID(PresetExpression.Shocked),
+                    MouthExpression = Character.Player.GetPresetExpressionID(PresetExpression.Shocked),
+                    Character = Character.Player,
+                    TextColor = Color.white,
+                });
+                DialogueManager.StartDialogue(dialogue);
                 User.EquipItem(this);
                 UseText = "Remove";
             }

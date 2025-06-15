@@ -13,6 +13,7 @@ namespace ItemExpansionMod
     public class CustomEquipment : ModEquipment
     {
         public bool IsLocked;
+        public int Price;
         public List<StatModifierInfo> StatRequirements;
         public List<StatModifierInfo> StatModifierInfos;
         private CustomApparel _instance;
@@ -26,6 +27,7 @@ namespace ItemExpansionMod
             apparel.Category = ItemCategory.Clothing;
             apparel.DisplaySpriteResource = spriteResolver.ResolveAsResource(PreviewImage);
             apparel.IsLocked = IsLocked;
+            apparel.Price = Price;
             apparel.StatRequirements = StatRequirements;
             apparel.StatModifierInfos = StatModifierInfos;
             typeof(Equipment)

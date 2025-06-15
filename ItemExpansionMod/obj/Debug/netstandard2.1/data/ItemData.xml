@@ -2,6 +2,7 @@
 <ArrayOfCustomEquipment xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<CustomEquipment>
 		<IsLocked>true</IsLocked>
+		<Price>200</Price>
 		<Name>Steel Shock Collar</Name>
 		<PreviewImage>assets\previews\steel_shock_collar.png</PreviewImage>
 		<Slots>
@@ -32,6 +33,7 @@
 	</CustomEquipment>
 	<CustomEquipment>
 		<IsLocked>false</IsLocked>
+		<Price>400</Price>
 		<Name>Full Body Black Latex Suit</Name>
 		<PreviewImage>assets\previews\full_body_black_latex_suit.png</PreviewImage>
 		<Slots>
@@ -63,6 +65,7 @@
 	</CustomEquipment>
 	<CustomEquipment>
 		<IsLocked>false</IsLocked>
+		<Price>160</Price>
 		<Name>Dark Boob Window Sweater</Name>
 		<PreviewImage>assets\previews\dark_boob_window_sweater.png</PreviewImage>
 		<Slots>
@@ -85,6 +88,7 @@
 	<CustomEquipment>
 		<IsLocked>true</IsLocked>
 		<Name>Basic Full Body Mods</Name>
+		<Price>1200</Price>
 		<PreviewImage>assets\previews\body_mods.png</PreviewImage>
 		<Slots>
 		</Slots>

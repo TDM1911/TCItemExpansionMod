@@ -1,0 +1,50 @@
+{
+  "Lines": [
+    {
+      "LineID": "andr_day_0",
+      "Text": "Hello!",
+      "Speaker": "",
+      "Character": "Jenna",
+      "NameOverride": "",
+      "Pose": "Idle",
+      "EyeExpression": "Happy",
+      "BrowExpression": "Happy",
+      "MouthExpression": "Happy",
+      "NextID": "andr_day_1"
+    },
+    {
+      "LineID": "andr_day_1",
+      "Text": "*No response*",
+      "Speaker": "",
+      "Character": "Jenna",
+      "NameOverride": "",
+      "Pose": "Idle",
+      "EyeExpression": "Think",
+      "BrowExpression": "Think",
+      "MouthExpression": "Think",
+      "NextID": "andr_day_2"
+    },
+    {
+      "LineID": "andr_day_2",
+      "Text": "Hmm... Maybe I should try and come back another time.",
+      "Speaker": "",
+      "Character": "Jenna",
+      "NameOverride": "",
+      "Pose": "Idle",
+      "EyeExpression": "Idle",
+      "BrowExpression": "Idle",
+      "MouthExpression": "Idle",
+      "NextID": ""
+    }
+  ],
+  "Guid": null,
+  "PlayOnce": false,
+  "IsPreset": false,
+  "FsmTemplate": null,
+  "SaveKeyToCheck": "",
+  "LeaveAnimationAlive": false,
+  "OnDialogueStart": {},
+  "OnDialogueEnd": {},
+  "OnLineStart": {},
+  "OnLineEnd": {}
+}
