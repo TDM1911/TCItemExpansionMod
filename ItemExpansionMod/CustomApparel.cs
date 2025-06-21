@@ -42,7 +42,6 @@ namespace ItemExpansionMod
             }
 
             UseText = "Wear";
-            Debug.Log(IsLocked);
             if (IsLocked)
             {
                 Dialogue dialogue = ScriptableObject.CreateInstance<Dialogue>();

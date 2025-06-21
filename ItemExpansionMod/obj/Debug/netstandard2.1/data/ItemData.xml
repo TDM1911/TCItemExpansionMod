@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0"?>
 <ArrayOfCustomEquipment xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<CustomEquipment>
-		<IsLocked>true</IsLocked>
+		<IsLocked>false</IsLocked>
 		<Price>200</Price>
 		<Name>Steel Shock Collar</Name>
 		<PreviewImage>assets\previews\steel_shock_collar.png</PreviewImage>
@@ -27,7 +27,38 @@
 			<StatModifierInfo>
 				<Type>Value</Type>
 				<StatName>stat_lust_power</StatName>
-				<ModifyAmount>5</ModifyAmount>
+				<ModifyAmount>2</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+	</CustomEquipment>
+	<CustomEquipment>
+		<IsLocked>false</IsLocked>
+		<Price>200</Price>
+		<Name>Steel Hand Cuff</Name>
+		<PreviewImage>assets\previews\steel_hand_cuff.png</PreviewImage>
+		<Slots>
+			<string>Accessory2</string>
+		</Slots>
+		<Sprites>
+			<ModEquipmentSprite>
+				<Name>Steel Hand Cuff</Name>
+				<Image>assets\steel_hand_cuff.png</Image>
+				<Color>#FFFFFFFF</Color>
+				<SortingLayer>Outfit</SortingLayer>
+				<SortingOrder>1</SortingOrder>
+			</ModEquipmentSprite>
+		</Sprites>
+		<StatRequirements>
+			<StatModifierInfo>
+				<StatName>stat_perversion</StatName>
+				<ModifyAmount>100</ModifyAmount>
+			</StatModifierInfo>
+		</StatRequirements>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<Type>Value</Type>
+				<StatName>stat_lust_power</StatName>
+				<ModifyAmount>2</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
 	</CustomEquipment>
@@ -52,7 +83,7 @@
 		<StatRequirements>
 			<StatModifierInfo>
 				<StatName>stat_perversion</StatName>
-				<ModifyAmount>100</ModifyAmount>
+				<ModifyAmount>200</ModifyAmount>
 			</StatModifierInfo>
 		</StatRequirements>
 		<StatModifierInfos>
@@ -115,6 +146,266 @@
 			<StatModifierInfo>
 				<StatName>stat_physical_defense</StatName>
 				<ModifyAmount>5</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+	</CustomEquipment>
+	<CustomEquipment>
+		<IsLocked>true</IsLocked>
+		<Name>Porcelain Full Body Mods</Name>
+		<Price>1200</Price>
+		<PreviewImage>assets\previews\body_mods.png</PreviewImage>
+		<Slots>
+		</Slots>
+		<Sprites>
+			<ModEquipmentSprite>
+				<Name>Basic Full Body Mods</Name>
+				<Image>assets\jenna_full_body_mods_2.png</Image>
+				<Color>#FFFFFFFF</Color>
+				<SortingLayer>UnderExpression</SortingLayer>
+				<SortingOrder>0</SortingOrder>
+			</ModEquipmentSprite>
+		</Sprites>
+		<StatRequirements>
+			<StatModifierInfo>
+				<StatName>stat_physical_defense</StatName>
+				<ModifyAmount>5</ModifyAmount>
+			</StatModifierInfo>
+		</StatRequirements>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<StatName>stat_lust_defense</StatName>
+				<ModifyAmount>5</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<StatName>stat_lust_power</StatName>
+				<ModifyAmount>5</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+	</CustomEquipment>
+	<CustomEquipment>
+		<IsLocked>false</IsLocked>
+		<Name>Bimbo Disguide</Name>
+		<Price>1500</Price>
+		<PreviewImage>assets\previews\bimbo_disguide.png</PreviewImage>
+		<Slots>
+			<string>Head</string>
+			<string>Jacket</string>
+			<string>Accessory1</string>
+			<string>Accessory2</string>
+			<string>HighHeels1</string>
+			<string>NipplePiercing</string>
+			<string>StomachTattoo</string>
+			<string>Choker</string>
+			<string>Pants</string>
+			<string>Shirt</string>
+		</Slots>
+		<Sprites>
+			<ModEquipmentSprite>
+				<Name>Bimbo Disguide</Name>
+				<Image>assets\bimbo_body.png</Image>
+				<Color>#FFFFFFFF</Color>
+				<SortingLayer>Outfit</SortingLayer>
+				<SortingOrder>1</SortingOrder>
+			</ModEquipmentSprite>
+		</Sprites>
+		<StatRequirements>
+			<StatModifierInfo>
+				<StatName>stat_perversion</StatName>
+				<ModifyAmount>350</ModifyAmount>
+			</StatModifierInfo>
+		</StatRequirements>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<StatName>stat_lust_power</StatName>
+				<ModifyAmount>10</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+	</CustomEquipment>
+	<CustomEquipment>
+		<IsLocked>false</IsLocked>
+		<Name>Black Cat Mech Suit</Name>
+		<Price>800</Price>
+		<PreviewImage>assets\previews\cat_mech_suit.png</PreviewImage>
+		<Slots>
+			<string>Head</string>
+			<string>Jacket</string>
+			<string>Accessory1</string>
+			<string>Accessory2</string>
+			<string>NipplePiercing</string>
+			<string>Choker</string>
+			<string>Pants</string>
+			<string>Shirt</string>
+		</Slots>
+		<Sprites>
+			<ModEquipmentSprite>
+				<Name>Black Cat Mech Suit</Name>
+				<Image>assets\cat_mech_suit.png</Image>
+				<Color>#FFFFFFFF</Color>
+				<SortingLayer>Outfit</SortingLayer>
+				<SortingOrder>1</SortingOrder>
+			</ModEquipmentSprite>
+		</Sprites>
+		<StatRequirements>
+			<StatModifierInfo>
+				<StatName>stat_perversion</StatName>
+				<ModifyAmount>200</ModifyAmount>
+			</StatModifierInfo>
+		</StatRequirements>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<StatName>stat_physical_defense</StatName>
+				<ModifyAmount>3</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<StatName>stat_lust_defense</StatName>
+				<ModifyAmount>2</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<StatName>stat_lust_power</StatName>
+				<ModifyAmount>3</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+	</CustomEquipment>
+	<CustomEquipment>
+		<IsLocked>false</IsLocked>
+		<Name>Bunny Suit</Name>
+		<Price>700</Price>
+		<PreviewImage>assets\previews\bunny_suit.png</PreviewImage>
+		<Slots>
+			<string>Head</string>
+			<string>Jacket</string>
+			<string>Accessory1</string>
+			<string>Accessory2</string>
+			<string>NipplePiercing</string>
+			<string>Choker</string>
+			<string>Pants</string>
+			<string>Shirt</string>
+			<string>HighHeels1</string>
+		</Slots>
+		<Sprites>
+			<ModEquipmentSprite>
+				<Name>Bunny Suit</Name>
+				<Image>assets\bunny_suit.png</Image>
+				<Color>#FFFFFFFF</Color>
+				<SortingLayer>Outfit</SortingLayer>
+				<SortingOrder>1</SortingOrder>
+			</ModEquipmentSprite>
+		</Sprites>
+		<StatRequirements>
+			<StatModifierInfo>
+				<StatName>stat_perversion</StatName>
+				<ModifyAmount>230</ModifyAmount>
+			</StatModifierInfo>
+		</StatRequirements>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<StatName>stat_lust_defense</StatName>
+				<ModifyAmount>4</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<StatName>stat_lust_power</StatName>
+				<ModifyAmount>2</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+	</CustomEquipment>
+	<CustomEquipment>
+		<IsLocked>false</IsLocked>
+		<Name>Reverse Bunny Suit</Name>
+		<Price>700</Price>
+		<PreviewImage>assets\previews\reverse_bunny_suit.png</PreviewImage>
+		<Slots>
+			<string>Head</string>
+			<string>Jacket</string>
+			<string>Accessory1</string>
+			<string>Accessory2</string>
+			<string>Choker</string>
+			<string>Pants</string>
+			<string>Shirt</string>
+			<string>HighHeels1</string>
+		</Slots>
+		<Sprites>
+			<ModEquipmentSprite>
+				<Name>Reverse Bunny Suit</Name>
+				<Image>assets\reverse_bunny_suit.png</Image>
+				<Color>#FFFFFFFF</Color>
+				<SortingLayer>Outfit</SortingLayer>
+				<SortingOrder>1</SortingOrder>
+			</ModEquipmentSprite>
+		</Sprites>
+		<StatRequirements>
+			<StatModifierInfo>
+				<StatName>stat_perversion</StatName>
+				<ModifyAmount>230</ModifyAmount>
+			</StatModifierInfo>
+		</StatRequirements>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<StatName>stat_lust_defense</StatName>
+				<ModifyAmount>2</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<StatName>stat_lust_power</StatName>
+				<ModifyAmount>4</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+	</CustomEquipment>
+	<CustomEquipment>
+		<IsLocked>false</IsLocked>
+		<Name>Black Body Piercing</Name>
+		<Price>110</Price>
+		<PreviewImage>assets\previews\black_body_piercing.png</PreviewImage>
+		<Slots>
+			<string>NipplePiercing</string>
+		</Slots>
+		<Sprites>
+			<ModEquipmentSprite>
+				<Name>Black Body Piercing</Name>
+				<Image>assets\black_body_piercing.png</Image>
+				<Color>#FFFFFFFF</Color>
+				<SortingLayer>Underwear</SortingLayer>
+				<SortingOrder>0</SortingOrder>
+			</ModEquipmentSprite>
+		</Sprites>
+		<StatRequirements>
+			<StatModifierInfo>
+				<StatName>stat_perversion</StatName>
+				<ModifyAmount>150</ModifyAmount>
+			</StatModifierInfo>
+		</StatRequirements>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<StatName>stat_lust_defense</StatName>
+				<ModifyAmount>1</ModifyAmount>
+			</StatModifierInfo>
+		</StatModifierInfos>
+	</CustomEquipment>
+	<CustomEquipment>
+		<IsLocked>false</IsLocked>
+		<Name>Respiratory Mask</Name>
+		<Price>320</Price>
+		<PreviewImage>assets\previews\respiratory_mask.png</PreviewImage>
+		<Slots>
+			<string>Head</string>
+		</Slots>
+		<Sprites>
+			<ModEquipmentSprite>
+				<Name>Respiratory Mask</Name>
+				<Image>assets\respiratory_mask.png</Image>
+				<Color>#FFFFFFFF</Color>
+				<SortingLayer>Outfit</SortingLayer>
+				<SortingOrder>0</SortingOrder>
+			</ModEquipmentSprite>
+		</Sprites>
+		<StatRequirements>
+		</StatRequirements>
+		<StatModifierInfos>
+			<StatModifierInfo>
+				<StatName>stat_lust_defense</StatName>
+				<ModifyAmount>2</ModifyAmount>
+			</StatModifierInfo>
+			<StatModifierInfo>
+				<StatName>stat_physical_defense</StatName>
+				<ModifyAmount>2</ModifyAmount>
 			</StatModifierInfo>
 		</StatModifierInfos>
 	</CustomEquipment>
