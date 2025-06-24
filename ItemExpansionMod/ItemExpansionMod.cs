@@ -40,12 +40,16 @@ namespace ItemExpansionMod
         public void OnLevelChanged(string oldLevel, string newLevel)
         {
             string baseCustomShopLevel = "Motel_Tunnel";
-            if (inAndrNPCRoom = true && newLevel != baseCustomShopLevel)
+            if (inAndrNPCRoom == true && newLevel != baseCustomShopLevel)
             {
                 inAndrNPCRoom = false;
                 Character.Player.Handlers.First().transform.position = new Vector3(8f, -18f);
             }
-            if (inAndrNPCRoom = true && newLevel == baseCustomShopLevel)
+            if (inAndrNPCRoom == false)
+            {
+                //
+            }
+            if (inAndrNPCRoom == true && newLevel == baseCustomShopLevel)
             {
                 List<CustomApparel> lockedItems = new List<CustomApparel>();
                 foreach (CustomApparel item in Character.Player.EquippedItems.GetAll<CustomApparel>())
