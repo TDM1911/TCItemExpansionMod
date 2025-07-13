@@ -25,7 +25,6 @@ namespace ItemExpansionMod
         public List<string> NewItemNames = new List<string>();
         public List<Dialogue> dialogues = new List<Dialogue>();
         public Dictionary<string, ANResourceSprite> resourceSprites = new Dictionary<string, ANResourceSprite>();
-        public bool inAndrNPCRoom = false;
 
         public void OnDialogueStarted(Dialogue dialogue)
         {
@@ -34,22 +33,22 @@ namespace ItemExpansionMod
 
         public void OnFrame(float deltaTime)
         {
-            //
+            // If you decompile this to check for malware :3 Hi!!! :D
         }
 
         public void OnLevelChanged(string oldLevel, string newLevel)
         {
-            string baseCustomShopLevel = "Motel_Tunnel";
-            if (inAndrNPCRoom == true && newLevel != baseCustomShopLevel)
-            {
-                inAndrNPCRoom = false;
-                Character.Player.Handlers.First().transform.position = new Vector3(8f, -18f);
-            }
-            if (inAndrNPCRoom == false)
+            Character.Player.OnItemEquipped.AddListener(x =>
             {
                 //
+            });
+            string baseCustomShopLevel = "Motel_Tunnel";
+            if (SaveManager.GetKey("inAndrNPCRoom", false) == true && newLevel != baseCustomShopLevel)
+            {
+                SaveManager.SetKey("inAndrNPCRoom", false);
+                Character.Player.Handlers.First().transform.position = new Vector3(8f, -18f);
             }
-            if (inAndrNPCRoom == true && newLevel == baseCustomShopLevel)
+            if (SaveManager.GetKey("inAndrNPCRoom", false) == true && newLevel == baseCustomShopLevel)
             {
                 List<CustomApparel> lockedItems = new List<CustomApparel>();
                 foreach (CustomApparel item in Character.Player.EquippedItems.GetAll<CustomApparel>())
@@ -141,7 +140,7 @@ namespace ItemExpansionMod
                         }
                         else
                         {
-                            inAndrNPCRoom = true;
+                            SaveManager.SetKey("inAndrNPCRoom", true);
                             LevelTransition.Instance.ToLevel(baseCustomShopLevel);
                         }
                     }

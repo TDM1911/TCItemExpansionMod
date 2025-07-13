@@ -18,6 +18,29 @@ namespace ItemExpansionMod
         public int Price;
         public List<StatModifierInfo> StatModifierInfos;
 
+        public override void Equipped(Character User)
+        {
+            if (IsLocked)
+            {
+                Dialogue dialogue = ScriptableObject.CreateInstance<Dialogue>();
+                dialogue.Lines.Add(new DialogueLine()
+                {
+                    LineID = "body_mod_alert",
+                    Text = "I can't equip this without A's help!",
+                    Speaker = "Jenna",
+                    BrowExpression = Character.Player.GetPresetExpressionID(PresetExpression.Shocked),
+                    EyeExpression = Character.Player.GetPresetExpressionID(PresetExpression.Shocked),
+                    MouthExpression = Character.Player.GetPresetExpressionID(PresetExpression.Shocked),
+                    Character = Character.Player,
+                    TextColor = Color.white,
+                });
+                DialogueManager.StartDialogue(dialogue);
+                UseText = "Wear";
+                return;
+            }
+            base.Equipped(User);
+        }
+
         public override void UnEquipped(Character User)
         {
             User = User.Get();
